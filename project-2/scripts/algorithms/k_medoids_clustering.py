@@ -60,6 +60,8 @@ class KMedoidsClustering(KNN):
 
       #randomly choose k points
         #find the max number of data points
+        print("Size of Edited Data Frame: ")
+        print(edited_data_frame.shape[0])
         maxRange = edited_data_frame.shape[0]
         #print(maxRange)
         #this list holds the indices of the medoids in relation to the distance matrix
