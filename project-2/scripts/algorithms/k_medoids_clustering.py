@@ -11,6 +11,7 @@ sys.path.append('../../../data')
 from data_api import DataApi
 from k_nearest_neighbor import KNN
 from edited_knn import EditedKNN
+from condensed_knn import CondensedKNN
 import math
 from random import randint
 import pandas as pd
