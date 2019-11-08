@@ -104,9 +104,13 @@ class KNN:
         print(data_frame.loc[index]['CLASS'])
         classes.append(data_frame.loc[index]['CLASS'])
 
-      class_estimate = stats.mode(classes)
-
-
+      class_estimate = ''
+      max_class_count = 0
+      for class in classes:
+        class_count = classes.count(class)
+        if class_count > max_class_count:
+            class_estimate = class
+      
       return class_estimate
 
 
