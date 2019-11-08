@@ -61,6 +61,8 @@ class KMedoidsClustering(KNN):
 
         #data_frame = full_data_frame.loc[:, full_data_frame.columns != 'CLASS']
 
+        edited_data_frame = edited_data_frame.reset_index(drop=True)
+        
       #randomly choose k points
         #find the max number of data points
         print("Size of Edited Data Frame: ")
