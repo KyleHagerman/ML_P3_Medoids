@@ -34,6 +34,7 @@ class KMedoidsClustering(KNN):
         self.DEBUG = False
         self.data_api_impl = DataApi('../../data/')
         self.enn_impl = EditedKNN()
+        self.cnn_impl = CondensedKNN()
 
 
     '''
@@ -51,7 +52,7 @@ class KMedoidsClustering(KNN):
         #data_frame = full_data_frame.loc[:, full_data_frame.columns != 'CLASS']
         self.enn_impl.set_data_set(self.get_data_set())
         dist_matrix = self.get_distance_matrix(preprocessed_data_frame.loc[:, preprocessed_data_frame.columns != 'CLASS'])
-        edited_data_frame = self.cnn.impl.get_condensed_training_set(training_set, dist_matrix, parameter)
+        edited_data_frame = self.cnn_impl.get_condensed_training_set(training_set, dist_matrix, parameter)
 
         #if self.DEBUG:
 
