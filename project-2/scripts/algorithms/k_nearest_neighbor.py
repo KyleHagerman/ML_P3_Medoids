@@ -106,10 +106,10 @@ class KNN:
 
       class_estimate = ''
       max_class_count = 0
-      for class in classes:
+      for class_in_list in classes:
         class_count = classes.count(class)
         if class_count > max_class_count:
-            class_estimate = class
+            class_estimate = class_in_list
       
       return class_estimate
 
