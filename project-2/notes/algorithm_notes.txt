@@ -1,0 +1,54 @@
+
+ALGORITHM NOTES:
+
+Algorithms:
+	- implement k-NN using entire training set
+	- implement edited k-NN using entire training set
+	- implement condensed k-NN using entire training set
+	- implement k-means clustering and use cluster centroids as reduced data set for k-NN
+	- implement Partitioning Around Medoids for k-medoids clustering and use medoids as reduced data set for k-NN
+
+
+k-NN (k Nearest Neighbor)
+	- use entire training set
+
+	- supervised machine learning algorithm
+	- can solve classification and regression problems
+
+	- the k-nearest neighbors algorithm (k-NN) is a non-parametric method used for classification and regression
+	- in both cases, the input consists of the k closest training examples in the feature space:
+		- in k-NN classification, the output is a class membership
+		- in k-NN regression, the output is the property value for the object
+
+	- k-NN is a type of instance-based learning, or lazy learning, where the function is 
+		only approximated locally and all computation is deferred until classification.
+
+
+Edited k-NN
+	- use entire training set
+
+
+Condensed k-NN
+	- use entire training set
+
+
+k-Means Clustering
+	- use cluster centroids as reduced data set for k-NN
+
+	- how do we handle categorical columns?
+
+	- papers read:
+	
+		- https://grid.cs.gsu.edu/~wkim/index_files/papers/kprototype.pdf
+
+		- http://delivery.acm.org.proxybz.lib.montana.edu/10.1145/3300000/3297549/p542-brnawy.pdf?ip=153.90.170.23&id=3297549&acc=ACTIVE%20SERVICE&key=70F2FDC0A279768C%2E740818F4D5047FCE%2E4D4702B0C3E38B35%2E4D4702B0C3E38B35&__acm__=1569787813_36e0798352f635c021598d2b96e3b84a#URLTOKEN#
+
+		- https://link-springer-com.proxybz.lib.montana.edu:3443/content/pdf/10.1023%2FA%3A1009769707641.pdf
+
+
+Partitioning Around Medoids for k-Medoids Clustering
+	- use medoids as reduced data set for k-NN
+	- note that the k for k-medoids is different than the k for k-NN
+
+
+a regression problem has a real number as its output

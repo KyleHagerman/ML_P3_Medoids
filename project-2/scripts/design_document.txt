@@ -1,0 +1,35 @@
+
+APPLICATION ARCHITECTURE:
+
+three classification data sets and three regression data sets
+ - explain design of instance-based methods for handling each
+ - explain experimental design as well
+
+DataApi class for accessing data sets
+
+DATA:
+- classification data sets:
+	- abalone
+	- car evaluation
+	- image segmentation
+- regression data sets:
+	- computer hardware
+	- forest fires
+	- wine quality
+
+Preprocessor class for preprocessing of data sets, handle missing values - removal or data imputation
+- find min and max boundaries automatically i.o. provide them manually
+- create general functions to apply for preprocessing data sets (don't have dedicated functions)
+
+Algorithms:
+- implement k-NN using entire training set
+- implement edited k-NN using entire training set
+- implement condensed k-NN using entire training set
+- implement k-means clustering and use cluster centroids as reduced data set for k-NN
+- implement Partitioning Around Medoids for k-medoids clustering and use medoids as reduced data set for k-NN
+
+Execution:
+- test each of the k-NN algorithms using at least 5 different values for k (tuning)
+- when clustering, set k to equal the number of points returned from both edited NN and condensed NN
+
+ParameterTuner class for tuning hyperparameters of various algorithms

@@ -1,0 +1,55 @@
+
+QUESTIONS:
+
+is the Design Document supposed to be a LaTeX file?
+
+
+TASKS:
+
+- design application architecture
+- decide major design designs, record in notes
+- create UML diagram for application architecture
+- create Design Document with all the things
+
+
+- write code
+
+	Algorithms:
+	- implement k-NN using entire training set
+	- implement edited k-NN using entire training set
+	- implement condensed k-NN using entire training set
+	- implement k-means clustering and use cluster centroids as reduced data set for k-NN
+	- implement Partitioning Around Medoids for k-medoids clustering and use medoids as reduced data set for k-NN
+
+	Execution:
+	- test each of the k-NN algorithms using at least 5 different values for k (tuning)
+	- when clustering, set k to equal the number of points returned from both edited NN and condensed NN
+
+
+- write contributions file for code contributions of each team member
+
+
+- develop hypothesis on performance of each algorithm against the various data sets
+
+
+- write a paper that incorporates the following elements, summarizing the results of your experiments:
+	- (a) title and author name
+	- (b) A brief, one paragraph abstract summarizing the results of the experiments
+	- (c) Problem statement, including hypothesis
+	- (d) Description of algorithms implemented
+	- (e) Description of your experimental approach
+	- (f) Presentation of the results of your experiments
+	- (g) A discussion of the behavior of your algorithms, combined with any conclusions you can draw
+	- (h) Summary
+	- (i) References
+			- one reference related to each of the algorithms implemented 
+			- and any other eferences you consider to be relevant
+			- you should also provide a reference for each of the data sets
+				- you may not reference websites except for the data sets
+
+
+- make demo video
+	- show intermediate steps of algorithms as they run
+		- i.e. print out intermediate steps of the actual algorithm calculation
+	- don't bother showing code at all...
+
