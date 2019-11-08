@@ -1,0 +1,70 @@
+
+NOTES:
+
+
+
+neural network
+
+neuron - "a thing that holds a number between 0 and 1" 
+	- a function that takes in all the weights from the first layer and returns something in [0,1]
+
+- activations from one layer into column as vector a(transpose)
+- weight matrix - each row corresponds to all weights from the layer going to one neuron in the next layer 
+- take matrix vector product sigmoid([w][a] + [b]) 
+
+use python zip function to get a when doing feedforward given w and b
+
+reLU(a) = max(0,a)
+	- but probably need to normalize so it's still something in [0,1]
+
+
+
+gradient descent
+
+- want algorithm where we can show it a whole bunch of training points 
+- comes down to finding minimum of the function (the network)
+
+- initialize all weights and biases totally randomly
+- define cost function - way of telling computer: "bad computer! that's utter trash!"
+- get average cost over all training points - measure of how good/bad the network is
+
+- given huge column vector of all weights and biases - compute negative gradient
+	- gradient tells us which way to nudge each weight/bias in order to most quickly decrease the overall cost
+
+"network learning" = minimizing cost function
+
+gradient vector tells us which changes to which weights matter the most (in terms of minimizing the cost function)
+
+
+
+backpropagation
+
+- algorithm for computing gradient for single training example (how that point wants to nudge the weights and biases)
+- calculate nudges each neuron in output layer wants for a given input training point
+	- recursively apply this so we get the nudges for each neuron in the network 
+		- all preceding layers except input layer
+- then we have a big column vector (negative gradient) of all the nudges that should be made for a given training point
+- then we do this for all training points, and calculate the average gradient vector of all of them
+
+- computational efficiency improvement: mini-batching
+- randomly partition training data into a bunch of mini batches
+- calculate average gradient for the first mini batch, then update the network weights/biases accordingly
+	- then repeat for all other mini matches, until acceptable convergence
+
+
+to properly train a network you need a lot of training data
+
+
+
+
+
+
+neural_network base class:
+
+init_params()
+forward_prop()
+compute_cost()
+backward_prop()
+update_params()
+
+

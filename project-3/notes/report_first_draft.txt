@@ -1,0 +1,139 @@
+\documentclass[twoside,11pt]{article}
+
+% Any additional packages needed should be included after jmlr2e.
+% Note that jmlr2e.sty includes epsfig, amssymb, natbib and graphicx,
+% and defines many common macros, such as 'proof' and 'example'.
+%
+% It also sets the bibliographystyle to plainnat; for more information on
+% natbib citation styles, see the natbib documentation, a copy of which
+% is archived at http://www.jmlr.org/format/natbib.pdf
+
+\usepackage{jmlr2e}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{caption}
+
+% Definitions of handy macros can go here
+
+\newcommand{\dataset}{{\cal D}}
+\newcommand{\fracpartial}[2]{\frac{\partial #1}{\partial  #2}}
+
+% Heading arguments are {volume}{year}{pages}{submitted}{published}{author-full-names}
+
+\jmlrheading{21}{2019}{1-10}{11/19}{12/19}{Sladek, Thompson, Hagerman, and Hansen}
+
+% Short headings should be running head and authors last names
+
+\ShortHeadings{CSCI 447 Project 2}{Sladek, Thompson, Hagerman, and Hansen}
+\firstpageno{1}
+
+\begin{document}
+
+\title{Parameter Tuning with Multilayer Perceptron and Radial Basis Function Neural Networks}
+
+\author{\name Brandon Sladek \email 
+      brandonsladek@gmail.com \\ \addr School of Computing\\ Montana State University\\
+       Bozeman, MT 59718, USA
+        \AND
+        \name Jared Thompson \email j.a.thompson22@gmail.com \\ \addr School of Computing\\ Montana State University\\
+       Bozeman, MT 59718, USA
+        \AND
+        \name Kyle Hagerman \email hagermankyle96@gmail.com \\ \addr School of Computing\\ Montana State University\\
+       Bozeman, MT 59718, USA
+        \AND
+        \name Ryan Hansen \email ryanhansen2222@gmail.com \\ \addr School of Computing\\ Montana State University\\
+       Bozeman, MT 59718, USA}
+       
+\maketitle
+
+\begin{abstract}%   <- trailing '%' for backward compatibility of .sty file
+Abstract shit.
+\end{abstract}
+
+\begin{keywords}
+  Neural Networks, Multilayer Perceptron, Radial Basis Functions
+\end{keywords}
+
+\section{Introduction}
+
+Artifical neural networks have quickly become one of the most popular machine learning strategies in industry today. Their ability to learn complex decision boundaries for a wide variety of problems has led to the successful application of neural networks in fields as diverse as medical imaging and financial forecasting. Additionally, the substantial increase in available computing power over the last decade has further lead to a resurgence of interest in neural networks within the research community.
+
+\section{Problem}
+
+In the greatly influential research paper ``Multilayer Feedforward Networks are Universal Approximators" published in 1989, the authors rigorously established that standard multilayer feedforward neural networks, with arbitrary activation (``squashing") functions, can approximate essentially any function to any degree of accuracy, provided the network is large enough (\cite{hornik1989multilayer}). Furthermore, the authors claim that ``failures" in the networks can be attributed to poor training results, poor choices for hyperparameter values, or simply a lack of a deterministic relationship between the input and the expected output. In other words, theoretically, a neural network can be built and trained to any degree of accuracy, provided there is an actual relationship between the input and expected output, and the network is built in such a way that it can adequately learn the features of the input space and map them to an accurate output space with respect to the expected output.
+
+We seek to test this claim by running two different neural network implementations on various data sets using various parameter values. With repeated training/testing of the networks using different parameter values, we will be able to gain insight into which parameter values work best for each data set and network configuration.
+
+\section{Application Architecture}
+
+For the sake of writing clean, generic, and maintainable code, the application was broken up into multiple classes, with each handling a specific task needed to run a full experiment. The ``main" class is the ExperimentRunner, and the run\_experiment() method in ExperimentRunner is the main entry point into the application. To be precise, throughout the rest of the paper we will use the term ``experiment"" to mean one full run of the run\_experiment() method in the ExperimentRunner script.
+
+The run\_experiment() method first fetches the data for the specified data set by calling the DataApi. This class operates by reading the corresponding local csv file in the ``data" directory, and returning a Pandas dataframe object that contains all of the data that will be used in the experiment (\cite{McKinney:2010}).
+    
+The raw data from the DataApi is then preprocessed by passing it to the Preprocessor class, which generically handles replacing/imputing missing values and normalizing the raw data. In this case, we reused all of the preprocessing code from Project 2, since we used the same data sets in this project, and we did not need to do any further preprocessing on any of the data sets in this context. Then we set up the cross validation partitions by passing the preprocessed data into the CrossValidator class, which returns all of the train/test splits that will be used in the experiment.
+
+Finally, the ExperimentRunner loops through each of the train/test splits and runs the train\_gradient\_descent() method on the neural network instance to train the network with gradient descent using the training data, and then test the resulting trained network using the corresponding test data in each cross validation partition.
+
+\section{Networks}
+
+In this section we outline the architecture of the networks implemented in this project, both from the general network architecture perspective, as well as the relevant Python coding perspective and necessary implementation details.
+
+\subsection{Multilayer Perceptron Network}
+
+Concise description of MLPNetwork implementation details.
+
+\subsection{Radial Basis Function Network}
+
+Concise description of RBFNetwork implementation details.
+
+\subsection{Training}
+
+\subsection{Momentum}
+
+We implemented momentum as an option when training either of the neural networks. Incorporating momentum into the training phase typically results in improved performance by decreasing the time required for convergence, and increasing the range of parameter values with which network learning will still converge (\cite{qian1999momentum}).
+
+\subsection{Testing}
+  
+\section{Experiment}
+
+In this section we explain our general approach for accepting or rejecting our hypothesis for the various data sets, network configurations, and corresponding parameter values.
+
+     \subsection{Approach}
+    
+     We had two different networks we wanted to compare using six different data sets and various parameters. We compared the performance of the various dataset-algorithm-parameter combinations through comparable loss function values.
+     
+     Using Python and the Pandas library, we opted to run 10-fold class validation on each of the data sets. Cross validation helped to ensure our results were not particular to a specific training/test set. In probabilistic experiments, it is possible to get good or bad results due to random chance. Cross validation helps mitigate this problem by running the same process (in this case the algorithms) on various samples of the data. Finally, to ensure that each column attribute in our feature vector held equal weight, we normalized the column attributes to be values between zero and one.
+     
+    \subsection{Hypothesis}
+    
+    Our hypothesis was a ranking based on the performance of each network on each of the six data sets. We outline our ranking and justification in the table below.
+    \begin{table}[h]
+    \begin{tabular}{ll}
+                   & \textbf{Network Performance Rank}
+    \end{tabular}
+    \end{table}
+    
+    \subsection{Results}
+    
+    The following table shows our results. A higher accuracy indicates better performance for the classification data sets, and a lower error indicates better performance for the regression data sets.
+
+\section{Discussion}
+
+    In this section we discuss insightful analysis stuff.
+
+    \subsection{Analysis}
+    
+    The performance results are sensitive to the initial random configuration of weights and biases. In other words, the initial location of the parameter vector in the overall topological space of the cost function plays a significant role in which local minimum is reached (\cite{erhan2010does}).
+
+\section{Conclusion}
+
+This project involved a significant amount of programming, along with a fair amount of reasoning about the data sets and how best to approach and analyze each one.
+
+% Acknowledgements should go at the end, before appendices and references
+\acks{We acknowledge the UCI machine learning repository data sets used for this project (\cite{UCI:2019}). A link to the UCI machine learning repository is referenced below.} \newpage
+
+\bibliographystyle{ieeetr}
+\bibliography{MLP3-refs}
+
+\end{document}
